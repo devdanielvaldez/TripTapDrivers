@@ -1,0 +1,7 @@
+{
+  "name": "triptap-driver",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
