@@ -38,6 +38,7 @@ import RegisterUserScreen from './pages/RegisterUser/RegisterUser';
 import { User } from 'lucide-react';
 import AppHomeScreen from './pages/Home/Home';
 import NavigationBar from './components/NavigationBar';
+import TravelPlanner from './components/TravelPlanning';
 
 setupIonicReact();
 
@@ -45,7 +46,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
       <IonPage>
           <IonContent>
-              <div className="bg-[#181818] text-white pt-[70px] pl-10 pr-10 pb-[10px]">
+              <div className="bg-[#181818] text-white pt-[10px] pl-10 pr-10 pb-[10px]">
                   <header className="flex justify-between items-center">
                       <div>
                           <img src="/assets/logo_2.svg" className='w-10 h-10' alt="" />
@@ -56,7 +57,6 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   </header>
               </div>
               {children}
-              {/* Puedes mostrar un mensaje de error si la validación falla */}
               <NavigationBar />
           </IonContent>
       </IonPage>
@@ -80,6 +80,9 @@ const App: React.FC = () => (
           <MainLayout>
             <AppHomeScreen />
           </MainLayout>
+        </Route>
+        <Route exact path="/travel-planning">
+            <TravelPlanner />
         </Route>
 
 
