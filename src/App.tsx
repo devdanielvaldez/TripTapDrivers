@@ -33,6 +33,8 @@ import '@ionic/react/css/palettes/dark.system.css';
 /* Theme variables */
 import './theme/variables.css';
 import SplashScreen from './pages/Splash/Splash';
+import EmailLoginScreen from './pages/RegisterUser/EmailLogin';
+import RegisterUserScreen from './pages/RegisterUser/RegisterUser';
 
 setupIonicReact();
 
@@ -42,6 +44,12 @@ const App: React.FC = () => (
       <IonRouterOutlet>
         <Route exact path="/splash">
           <SplashScreen />
+        </Route>
+        <Route exact path="/login">
+          <EmailLoginScreen />
+        </Route>
+        <Route exact path="/register">
+          <RegisterUserScreen />
         </Route>
 
 
