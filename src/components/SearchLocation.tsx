@@ -1,6 +1,18 @@
 import { ChevronDown, MapPin } from "lucide-react";
+import { useState } from "react";
+import { v4 as uuid } from 'uuid';
+import { useSearchBoxCore } from "@mapbox/search-js-react";
+import axios from "axios";
 
 export default function TravelSearch() {
+  const [locations, setLocation] = useState([]);
+
+  const handleFindLocation = async (location: React.KeyboardEvent<HTMLInputElement>) => {
+    const value = (location.target as HTMLInputElement).value;
+    const response: any = await axios.get(`https://api.mapbox.com/search/searchbox/v1/suggest?q=${value}&limit=5&session_token=${uuid()}&access_token=pk.eyJ1IjoiaW5nZGFuaWVsdmFsZGV6IiwiYSI6ImNsdjl3cDQ5MzExYjMyamt3azIxcXRtNG0ifQ.1DTmTIstMhPDEOW91UAuEw`);
+    setLocation(response.data.suggestions);
+  };
+  
   return (
     <>
       <div className="absolute z-50 bottom-0 left-0 right-0 max-w-md mx-auto bg-[#181818] rounded-t-lg overflow-hidden shadow-lg">
@@ -31,19 +43,20 @@ export default function TravelSearch() {
               <input
                 type="text"
                 placeholder="¿A dónde va el usuario?"
+                onKeyUp={handleFindLocation}
                 className="bg-transparent text-white placeholder-gray-400 flex-1"
               />
             </div>
           </div>
         </div>
         <div className="px-4 pb-4">
-          {[1, 2].map((item) => (
+          {locations.map((item: any) => (
             <div key={item} className="mb-4 last:mb-0 flex items-start">
               <MapPin className="h-5 w-5 mr-2 mt-1 flex-shrink-0 text-gray-400" />
               <div>
-                <h3 className="font-semibold">Hard Rock Hotel</h3>
+                <h3 className="font-semibold">{item.name}</h3>
                 <p className="text-sm text-gray-400">
-                  Av. Principal de Punta Cana, Punta Cana km 07, Punta Cana, Re...
+                  {item.full_address}
                 </p>
               </div>
             </div>
