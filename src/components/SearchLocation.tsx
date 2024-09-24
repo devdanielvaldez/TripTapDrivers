@@ -36,6 +36,7 @@ export default function TravelSearch() {
                 type="text"
                 placeholder="Ubicación Actual"
                 className="bg-transparent text-white placeholder-gray-400 flex-1"
+                disabled
               />
             </div>
             <div className="flex items-center">
