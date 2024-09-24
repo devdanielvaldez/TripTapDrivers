@@ -37,6 +37,7 @@ import EmailLoginScreen from './pages/RegisterUser/EmailLogin';
 import RegisterUserScreen from './pages/RegisterUser/RegisterUser';
 import { User } from 'lucide-react';
 import AppHomeScreen from './pages/Home/Home';
+import NavigationBar from './components/NavigationBar';
 
 setupIonicReact();
 
@@ -56,7 +57,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               </div>
               {children}
               {/* Puedes mostrar un mensaje de error si la validación falla */}
-              {/* <NavigationBar /> */}
+              <NavigationBar />
           </IonContent>
       </IonPage>
   );
