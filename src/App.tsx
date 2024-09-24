@@ -36,6 +36,7 @@ import SplashScreen from './pages/Splash/Splash';
 import EmailLoginScreen from './pages/RegisterUser/EmailLogin';
 import RegisterUserScreen from './pages/RegisterUser/RegisterUser';
 import { User } from 'lucide-react';
+import AppHomeScreen from './pages/Home/Home';
 
 setupIonicReact();
 
@@ -73,6 +74,11 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/register">
           <RegisterUserScreen />
+        </Route>
+        <Route exact path="/home">
+          <MainLayout>
+            <AppHomeScreen />
+          </MainLayout>
         </Route>
 
 
