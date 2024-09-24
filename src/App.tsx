@@ -1,5 +1,5 @@
-import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import { Link, Redirect, Route } from 'react-router-dom';
+import { IonApp, IonContent, IonPage, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
 /* Core CSS required for Ionic components to work properly */
@@ -35,8 +35,31 @@ import './theme/variables.css';
 import SplashScreen from './pages/Splash/Splash';
 import EmailLoginScreen from './pages/RegisterUser/EmailLogin';
 import RegisterUserScreen from './pages/RegisterUser/RegisterUser';
+import { User } from 'lucide-react';
 
 setupIonicReact();
+
+const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return (
+      <IonPage>
+          <IonContent>
+              <div className="bg-[#181818] text-white pt-[70px] pl-10 pr-10 pb-[10px]">
+                  <header className="flex justify-between items-center">
+                      <div>
+                          <img src="/assets/logo_2.svg" className='w-10 h-10' alt="" />
+                      </div>
+                      <Link to="" className="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center">
+                          <User size={20} className="text-gray-400" />
+                      </Link>
+                  </header>
+              </div>
+              {children}
+              {/* Puedes mostrar un mensaje de error si la validación falla */}
+              {/* <NavigationBar /> */}
+          </IonContent>
+      </IonPage>
+  );
+};
 
 const App: React.FC = () => (
   <IonApp>
